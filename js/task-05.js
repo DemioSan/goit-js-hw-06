@@ -2,5 +2,6 @@ const nameInput = document.querySelector("#name-input");
 const nameOutput = document.querySelector("#name-output");
 
 nameInput.addEventListener("input", function () {
-  nameOutput.textContent = nameInput.value || "Anonymous";
+  const trimmedValue = nameInput.value.trim();
+  nameOutput.textContent = trimmedValue || "Anonymous";
 });

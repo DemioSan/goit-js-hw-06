@@ -14,39 +14,43 @@ const images = [
 ];
 
 const ulImages = document.querySelector(".gallery");
-ulImages.innerHTML = "";
 
-const styles = `
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    align-items: center;
-    justify-content: center;
-  }
+function createMarkup(arr) {
+  const styles = `
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .item {
-    flex: 0 0 calc(33.33% - 40px);
-    margin: 10px;
-    box-sizing: border-box;
-  }
+    .item {
+      flex: 0 0 calc(33.33% - 40px);
+      margin: 10px;
+      box-sizing: border-box;
+    }
 
-  .item img {
-    max-width: 100%;
-    display: block;
-    border: 5%;
-    border-radius: 5px;
-  }
-`;
+    .item img {
+      max-width: 100%;
+      display: block;
+      border: 5%;
+      border-radius: 5px;
+    }
+  `;
 
-const styleElement = document.createElement("style");
-styleElement.innerHTML = styles;
-document.head.appendChild(styleElement);
+  const styleElement = document.createElement("style");
+  styleElement.textContent = styles;
+  document.head.appendChild(styleElement);
 
-images.forEach((image) => {
-  ulImages.insertAdjacentHTML(
-    "beforeend",
-    `<li class="item"><img src="${image.url}" alt="${image.alt}"></li>`
-  );
-});
+  const markup = arr
+    .map(
+      ({ url, alt }) => `<li class="item"><img src="${url}" alt="${alt}"></li>`
+    )
+    .join("");
+
+  ulImages.insertAdjacentHTML("beforeend", markup);
+}
+
+createMarkup(images);

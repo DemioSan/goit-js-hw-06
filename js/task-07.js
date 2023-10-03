@@ -6,4 +6,6 @@ function changeFontSize() {
   text.style.fontSize = fontSize;
 }
 
+changeFontSize();
+
 fontSizeControl.addEventListener("input", changeFontSize);
