@@ -39,10 +39,7 @@ function createMarkup(arr) {
       border-radius: 5px;
     }
   `;
-
-  const styleElement = document.createElement("style");
-  styleElement.textContent = styles;
-  document.head.appendChild(styleElement);
+  document.head.insertAdjacentHTML("beforeend", `<style>${styles}</style>`);
 
   const markup = arr
     .map(
